@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1 id="ttl">Анкета</h1>
+    <h1>введите свои данные</h1>
+
+    <div class="row">
+        <form class="column-left">
+            <div class="ank">
+                <div class="col-s2 " style="width: 320px">
+
+                    <div class="row">
+                        <div class="input-field col-s12">
+                            <input id="name" type="text" class="validate">
+                            <label for="name" class="lbl">Имя</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col-s12">
+                            <input id="age" type="text" class="validate">
+                            <label for="age" class="lbl">Возраст</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col-s12">
+                            <input id="sex" type="text" class="validate">
+                            <label for="sex" class="lbl">Пол</label>
+                        </div>
+                    </div>
+
+                    <p style="text-align: center"><b>Какими языками программирования Вы владеете?</b></p>
+                    <p class="cbx"> <input type="checkbox" id="pascal"> <label for="pascal">Pascal</label> </p>
+                    <p class="cbx"> <input type="checkbox" id="c-cpp"> <label for="c-cpp">C/C++</label> </p>
+                    <p class="cbx"> <input type="checkbox" id="python"> <label for="python">Python</label> </p>
+                    <p class="cbx"> <input type="checkbox" id="java"> <label for="java">Java</label> </p>
+                    <p class="cbx"> <input type="checkbox" id="assembler"> <label for="assembler">Assembler</label> </p>
+                    <p class="cbx"> <input type="checkbox" id="basic"> <label for="basic">BASIC</label> </p>
+                    <p class="cbx"> <input type="checkbox" id="ruby"> <label for="ruby">Ruby</label> </p>
+                </div>
+
+                <div class="col-s2" style="border-left: none">
+                    <div class="row">
+                        <p class="lbl">Выберите фото профиля:</p>
+                        <img src="Arrows-etc/arr-left.png" width="33px" height="55px" style="vertical-align: 50px" onclick="dec()">
+                        <img id="image" src="" class="profpic">
+                        <img src="Arrows-etc/arr-right.png" width="33px" height="55px" style="vertical-align: 50px" onclick="add()">
+                    </div>
+                    <div class="row">
+                        <p><b>Расскажите о себе:</b></p>
+                        <textarea name="NAME" cols=30 rows=8></textarea>
+                    </div>
+                </div>
+
+                </div>
+            <p> <input type="button" class="btn" value="Заполнить анкету" onclick="check()" </p>
+            <div id="div1">(чтобы попасть в клуб программистов)</div>
+        </form>
+
+    </div>
+
+
+  <script>
+      document.getElementById("ttl").style = "text-shadow: 1px 1px 5px DarkSalmon";
+      var ent = true;
+      var x = document.getElementById("showpic")
+      var image = document.getElementById("image");
+      var imgarray = new Array('Faces/1.png', 'Faces/2.png', 'Faces/3.png', 'Faces/4.png', 
+                                'Faces/5.png', 'Faces/6.png', 'Faces/7.png', 'Faces/8.png',
+                                'Faces/9.png', 'Faces/10.png', 'Faces/11.png', 'Faces/12.png', 'Faces/13.png', 'Faces/14.png');
+      var imgn = 0;
+ 
+	function check()
+	{
+	var x = document.getElementById("div1");
+        if (ent == true) {
+            if (document.getElementById("pascal").checked == true ||
+                document.getElementById("c-cpp").checked == true ||
+                document.getElementById("python").checked == true ||
+                document.getElementById("java").checked == true ||
+                document.getElementById("assembler").checked == true ||
+                document.getElementById("basic").checked == true ||
+                document.getElementById("ruby").checked == true) {
+                var text = '<p class="ok">Добро пожаловать!</p>'
+                x.innerHTML = text;
+                x.style.display = "block";
+            }
+            else {
+                var text = '<p class="nook">Вы не знаете программирование, уходите!</p>'
+                x.innerHTML = text;
+                x.style.display = "block";
+            }
+            ent = false;
+        }
+	}
+
+    function add()
+    {
+        if (imgn < 13) { imgn++; }
+        else { imgn = 0; }
+        showpicture();
+    }
+
+    function dec()
+    {
+        if (imgn > 0) { imgn--; }
+        else { imgn = imgarray.length-1; }
+        showpicture();
+    }
+
+      function showpicture()
+      {
+          image.src = imgarray[imgn];
+      }
+        document.getElementById("showpic").innerHTML = showpicture();
+  </script>
+
+    <style>
+
+        h1 {
+            color: FireBrick;
+            line-height: 0.4;
+            text-align: center;
+            font-size: 23px;
+        }
+
+        body {
+            /*font-family: Bezpredmetizm;*/
+            font-family: 'Courier New';
+            font-size: 18px;
+            text-align: center;
+            background: PapayaWhip url(TextureWH.png) repeat;
+            background-size: 400px 400px;
+        }
+
+        p 
+        {
+            margin-top: 0px;
+            margin-bottom: 3px;
+        }
+
+        .lbl {
+            font-size: 14px;
+        }
+
+        .cbx 
+        {
+            color: FireBrick;
+        }
+
+        .cbx:hover 
+        {
+            color: DarkSalmon;
+        }
+
+
+        .col-s2 
+        {
+            padding: 10px;
+            border: 4px dotted #b6ff00;
+        }
+
+        .ank 
+        {
+            text-align: left;
+            border: 2px solid DarkSalmon;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border-style: solid;
+            display:inline-flex;
+            background: ivory;
+            box-shadow: 0px 1px 5px DarkSalmon;
+        }
+
+        .ok {
+            color: #b6ff00;
+            font-size: 38px;
+            transform: rotate(-6deg);
+            text-shadow: 0px 1px 5px #ffffff;
+            font-weight: bold;
+        }
+
+        .nook {
+            /*font-family: 'YouMurderer BB(RUS BY LYAJKA)';*/
+            color: DarkRed;
+            font-size: 45px;
+            transform: rotate(8deg);
+            text-shadow: 0px 1px 5px FireBrick;
+            font-weight: bold;
+        }
+
+        .profpic 
+        {
+            border: 4px dotted #b6ff00;
+        }
+
+        .row
+        {
+           width: 100%;
+        }
+        .btn {
+            color: #ffffff;
+            font-family: 'Courier New';
+            font-size: 14px;
+            font-weight: bold;
+            background: #b6ff00;
+            outline: none;
+            padding: 10px;
+        }
+
+        .btn:hover {
+            background: #cbff52;
+        }
+
+        .btn:active {
+            background: #7ccb52;
+        }
+        
+    </style>
+</body>
+</html>
